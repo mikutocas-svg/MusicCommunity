@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>音コミュ！</title>
+    <title>音コミュ！ Lite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { -webkit-tap-highlight-color: transparent; font-family: sans-serif; }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
         input, textarea { font-size: 16px !important; }
     </style>
 </head>
@@ -15,10 +14,10 @@
 
     <div id="authScreen" class="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center p-6">
         <h1 class="text-4xl font-black text-blue-600 mb-2">音コミュ！</h1>
-        <p class="text-gray-400 mb-10 text-sm font-bold">IDとパスワードでログイン</p>
+        <p class="text-gray-400 mb-10 text-sm font-bold">IDとパスワード(8文字以上)を入力</p>
         <div class="w-full max-w-sm space-y-3">
-            <input type="text" id="authId" placeholder="ユーザーID" class="w-full border-2 border-gray-100 p-4 rounded-2xl focus:border-blue-500 outline-none">
-            <input type="password" id="authPassword" placeholder="パスワード(8文字以上)" class="w-full border-2 border-gray-100 p-4 rounded-2xl focus:border-blue-500 outline-none">
+            <input type="text" id="authId" placeholder="ユーザーID" class="w-full border-2 border-gray-100 p-4 rounded-2xl outline-none">
+            <input type="password" id="authPassword" placeholder="パスワード(8文字以上)" class="w-full border-2 border-gray-100 p-4 rounded-2xl outline-none">
             <div class="pt-4 space-y-3">
                 <button id="signUpBtn" class="w-full bg-blue-600 text-white p-4 rounded-2xl font-bold shadow-lg">新規登録</button>
                 <button id="loginBtn" class="w-full bg-gray-100 text-gray-600 p-4 rounded-2xl font-bold">ログイン</button>
@@ -32,7 +31,6 @@
                 <div id="toProfile" class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold cursor-pointer">👤</div>
                 <h1 id="currentCategoryTitle" class="font-bold text-lg">ラウンジ</h1>
             </div>
-            <button id="searchBtn" class="text-blue-600 text-xs font-bold">タグ検索</button>
         </header>
 
         <div class="bg-white border-b flex justify-around p-2 text-xs font-bold text-gray-400">
@@ -41,37 +39,21 @@
             <button id="cat-band">バンド結成</button>
         </div>
 
-        <div class="p-3">
-            <button id="vcBtn" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-3 rounded-2xl font-bold shadow-md">🎤 通話を開始する</button>
-        </div>
-
         <main id="postContainer" class="p-4 space-y-4 pb-48"></main>
 
-        <footer class="fixed bottom-16 left-0 right-0 bg-white/90 backdrop-blur-md border-t p-3 max-w-md mx-auto z-40">
-            <div class="flex items-end space-x-2">
-                <label class="bg-gray-100 p-2 rounded-xl cursor-pointer">
-                    <span>📷</span>
-                    <input type="file" id="fileInput" accept="image/*,video/*" class="hidden">
-                </label>
-                <textarea id="messageInput" placeholder="投稿内容..." class="flex-1 bg-gray-100 rounded-xl p-2 h-10 outline-none"></textarea>
-                <button id="sendBtn" class="bg-blue-600 text-white p-2 px-4 rounded-xl font-bold">送信</button>
+        <footer class="fixed bottom-0 left-0 right-0 bg-white border-t p-3 max-w-md mx-auto z-40">
+            <div class="flex items-end space-x-2 mb-2">
+                <textarea id="messageInput" placeholder="メッセージを入力..." class="flex-1 bg-gray-100 rounded-xl p-3 h-12 outline-none resize-none"></textarea>
+                <button id="sendBtn" class="bg-blue-600 text-white p-3 rounded-xl font-bold">送信</button>
             </div>
         </footer>
-
-        <nav class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around p-3 z-50">
-            <button id="nav-home">🏠</button>
-            <button id="nav-dm">✉️</button>
-            <button id="nav-profile">👤</button>
-        </nav>
     </div>
 
     <div id="profilePage" class="hidden fixed inset-0 bg-white z-[60] p-6">
         <button id="backToHome" class="text-blue-600 font-bold mb-6">← 戻る</button>
         <div class="text-center">
-            <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">👤</div>
             <h2 id="profileName" class="text-2xl font-bold">---</h2>
-            <p id="profileId" class="text-gray-400 text-sm">@---</p>
-            <button id="logoutBtn" class="mt-10 text-red-500 border border-red-200 px-4 py-2 rounded-xl text-sm">ログアウト</button>
+            <button id="logoutBtn" class="mt-10 text-red-500 border border-red-200 px-6 py-3 rounded-xl">ログアウト</button>
         </div>
     </div>
 
